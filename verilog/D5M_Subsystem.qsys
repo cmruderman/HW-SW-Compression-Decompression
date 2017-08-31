@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element Bayer_Resampler
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element D5M_Config
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element Sys_Clk
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element Video_In
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element Video_In_Clipper
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element Video_In_DMA
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element Video_In_RGB_Resampler
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element Video_In_Scaler
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="avalon_d5m_config_slave"
+   internal="D5M_Config.avalon_av_config_slave"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="d5m_config"
+   internal="D5M_Config.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface name="sys_clk" internal="Sys_Clk.clk_in" type="clock" dir="end" />
+ <interface
+   name="sys_reset"
+   internal="Sys_Clk.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="video_in"
+   internal="Video_In.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="video_in_dma_control_slave"
+   internal="Video_In_DMA.avalon_dma_control_slave"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="video_in_dma_master"
+   internal="Video_In_DMA.avalon_dma_master"
+   type="avalon"
+   dir="start" />
+ <module
+   name="Bayer_Resampler"
+   kind="altera_up_avalon_video_bayer_resampler"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="custom_height_in" value="1944" />
+  <parameter name="custom_width_in" value="2592" />
+  <parameter name="device">5MP daughtercard (THDB_D5M)</parameter>
+  <parameter name="use_custom_format" value="true" />
+ </module>
+ <module
+   name="D5M_Config"
+   kind="altera_up_avalon_audio_and_video_config"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="audio_in" value="Microphone to ADC" />
+  <parameter name="bit_length" value="24" />
+  <parameter name="board" value="DE1-SoC" />
+  <parameter name="d5m_resolution" value="2592 x 1944" />
+  <parameter name="dac_enable" value="true" />
+  <parameter name="data_format" value="Left Justified" />
+  <parameter name="device">5 Megapixel Camera (TRDB_D5M)</parameter>
+  <parameter name="eai" value="true" />
+  <parameter name="exposure" value="true" />
+  <parameter name="line_in_bypass" value="false" />
+  <parameter name="mic_attenuation" value="-6dB" />
+  <parameter name="mic_bypass" value="false" />
+  <parameter name="sampling_rate" value="48 kHz" />
+  <parameter name="video_format" value="NTSC" />
+ </module>
+ <module name="Sys_Clk" kind="clock_source" version="15.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="false" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module
+   name="Video_In"
+   kind="altera_up_avalon_video_decoder"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="video_source">5MP Daughtercard (THDB_D5M)</parameter>
+ </module>
+ <module
+   name="Video_In_Clipper"
+   kind="altera_up_avalon_video_clipper"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="add_bottom" value="0" />
+  <parameter name="add_left" value="0" />
+  <parameter name="add_right" value="0" />
+  <parameter name="add_top" value="0" />
+  <parameter name="add_value_plane_1" value="0" />
+  <parameter name="add_value_plane_2" value="0" />
+  <parameter name="add_value_plane_3" value="0" />
+  <parameter name="add_value_plane_4" value="0" />
+  <parameter name="color_bits" value="16" />
+  <parameter name="color_planes" value="1" />
+  <parameter name="drop_bottom" value="6" />
+  <parameter name="drop_left" value="8" />
+  <parameter name="drop_right" value="8" />
+  <parameter name="drop_top" value="6" />
+  <parameter name="height_in" value="972" />
+  <parameter name="width_in" value="1296" />
+ </module>
+ <module
+   name="Video_In_DMA"
+   kind="altera_up_avalon_video_dma_controller"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="addr_mode" value="X-Y" />
+  <parameter name="back_start_address" value="134217728" />
+  <parameter name="color_bits" value="16" />
+  <parameter name="color_planes" value="1" />
+  <parameter name="dma_enabled" value="false" />
+  <parameter name="height" value="240" />
+  <parameter name="mode">From Stream to Memory</parameter>
+  <parameter name="start_address" value="134217728" />
+  <parameter name="width" value="320" />
+ </module>
+ <module
+   name="Video_In_RGB_Resampler"
+   kind="altera_up_avalon_video_rgb_resampler"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="alpha" value="1023" />
+  <parameter name="input_type" value="24-bit RGB" />
+  <parameter name="output_type" value="16-bit RGB" />
+ </module>
+ <module
+   name="Video_In_Scaler"
+   kind="altera_up_avalon_video_scaler"
+   version="15.1"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="color_bits" value="16" />
+  <parameter name="color_planes" value="1" />
+  <parameter name="height_in" value="960" />
+  <parameter name="height_scaling" value="0.25" />
+  <parameter name="width_in" value="1280" />
+  <parameter name="width_scaling" value="0.25" />
+ </module>
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
+   start="Bayer_Resampler.avalon_bayer_source"
+   end="Video_In_RGB_Resampler.avalon_rgb_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
+   start="Video_In_Clipper.avalon_clipper_source"
+   end="Video_In_Scaler.avalon_scaler_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
+   start="Video_In.avalon_decoder_source"
+   end="Bayer_Resampler.avalon_bayer_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
+   start="Video_In_RGB_Resampler.avalon_rgb_source"
+   end="Video_In_Clipper.avalon_clipper_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
+   start="Video_In_Scaler.avalon_scaler_source"
+   end="Video_In_DMA.avalon_dma_sink" />
+ <connection kind="clock" version="15.1" start="Sys_Clk.clk" end="D5M_Config.clk" />
+ <connection kind="clock" version="15.1" start="Sys_Clk.clk" end="Video_In.clk" />
+ <connection
+   kind="clock"
+   version="15.1"
+   start="Sys_Clk.clk"
+   end="Bayer_Resampler.clk" />
+ <connection
+   kind="clock"
+   version="15.1"
+   start="Sys_Clk.clk"
+   end="Video_In_RGB_Resampler.clk" />
+ <connection
+   kind="clock"
+   version="15.1"
+   start="Sys_Clk.clk"
+   end="Video_In_Clipper.clk" />
+ <connection
+   kind="clock"
+   version="15.1"
+   start="Sys_Clk.clk"
+   end="Video_In_Scaler.clk" />
+ <connection
+   kind="clock"
+   version="15.1"
+   start="Sys_Clk.clk"
+   end="Video_In_DMA.clk" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="D5M_Config.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Video_In.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Bayer_Resampler.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Video_In_RGB_Resampler.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Video_In_Clipper.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Video_In_Scaler.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="Sys_Clk.clk_reset"
+   end="Video_In_DMA.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>
